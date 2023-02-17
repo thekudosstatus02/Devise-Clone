@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ThirdApp</title>
+    <title>BlogApp</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -13,8 +13,8 @@
   <body>
   <div class="links">
  <% if session[:user] %>
-   <%= link_to "Edit Profile",{:style=>'color:#FFFFFF;', :class => "css_class"} %><br/>
-   <%= link_to "Reset Password", password_reset_password_path,{:style=>'color:#FFFFFF;', :class => "css_class"} %><br/>
+   <%= link_to "Edit Profile", account_edit_profile_path, {:style=>'color:#FFFFFF;', :class => "css_class"} %> |
+   <%= link_to "Reset Password", password_reset_password_path,{:style=>'color:#FFFFFF;', :class => "css_class"} %>|
    <%= link_to "Logout", account_logout_path, {:style=>'color:#FFFFFF;', :class => "css_class"} %>
    <% else %>
    <%= link_to "Sign Up", account_signup_path, {:style=>'color:#FFFFFF;', :class => "css_class"} %>

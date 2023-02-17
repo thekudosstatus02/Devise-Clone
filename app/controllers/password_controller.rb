@@ -5,8 +5,6 @@ class PasswordController < ApplicationController
       if @user
         new_password = User.create_random_password
         UserNotifierMailer.forgot_password_alert(@user, new_password).deliver
-        puts "================"
-        puts new_password
         @user.update(:password=>new_password)
         redirect_to account_login_url
       else

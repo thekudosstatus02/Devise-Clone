@@ -1,10 +1,8 @@
 class AccountController < ApplicationController
-
   def signup
     @user = User.new
     if request.post?
       @user = User.new(user_params)
-
       if @user.save
         UserNotifierMailer.signup_alert(@user).deliver
         redirect_to "/account/login", notice: 'Successfully created account'
@@ -12,10 +10,9 @@ class AccountController < ApplicationController
         render :signup
       end
     end
-
   end
 
-def login
+  def login
     if request.post?
       @user = User.authenticate(params[:email], params[:password])
       if @user
@@ -37,18 +34,18 @@ def login
   def edit_profile
     @user = User.find(session[:user])
     if request.post?
-      puts "============INSIDE THE POST OF EDIT PROFILE"
-      puts "============INSIDE THE POST OF EDIT PROFILE#{@user.email}"
       if @user
-        puts "============INSIDE THE @USER OF EDIT PROFILE"
         @user.update(:first_name=>params[:first_name], :last_name=>params[:last_name], :mobile=>params[:mobile], :header_image=>params[:header_image])
-        puts "============INSIDE THE @USER OF EDIT PROFILE#{@user.first_name}"
         redirect_to account_dashboard_url
       else
         flash[:notice] = "Please enter the valid details!"
         render :action=>edit_profile
       end
     end
+  end
+
+  def dashboard
+    @user = User.find(session[:user])
   end
 
   private
