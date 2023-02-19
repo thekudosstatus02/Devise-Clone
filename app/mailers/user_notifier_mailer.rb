@@ -11,7 +11,7 @@ class UserNotifierMailer < ApplicationMailer
     mail(to: user_data.email, subject: "Your account as been created")
 
   end
-  
+    
   def forgot_password_alert(user_data, pass)
 
     @name = user_data.first_name

@@ -1,48 +1,32 @@
-
-  <%= form_with url: "/account/edit_profile", method: :post do |f| %>
-
+<%= form_with url: "/account/edit_profile", method: :post do |f| %>
   <div class="title">Edit Profile</div>
-
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user to signup:</h2>
-
       <ul>
-        <% @user.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
+      <% @user.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
       </ul>
     </div>
   <% end %>
-
-<div class="input-boxes"> 
-                
-                <div class="input-box">
-                <%= f.label :header_image %>
-                <%= f.file_field :header_image, value: "#{@user.header_image}" %>
-                 </div>
-
-                <div class="input-box" >
-                <%= f.text_field :first_name, placeholder: "First name", value: "#{@user.first_name}" %>
-                </div>
-                            
-                            
-                <div class="input-box" >
-                <%= f.text_field :last_name, placeholder: "Last name", value: "#{@user.last_name}"  %>
-                </div>
-
-                <div class="input-box" >
-                <%= f.number_field :mobile, placeholder: "Mobile", value: "#{@user.mobile}"  %>
-                </div>
-                        
-
-  </div>
-
-    <div class="button input-box">   
-    <%= f.submit  "Edit" %>
+  <div class="input-boxes"> 
+    <div class="input-box">
+      <%= f.label :header_image %>
+      <%= f.file_field :header_image, value: "#{@user.header_image}" %>
     </div>
-     
-
-
-  <% end %>
+    <div class="input-box" >
+      <%= f.text_field :first_name, placeholder: "First name", value: "#{@user.first_name}" %>
+    </div>
+    <div class="input-box" >
+      <%= f.text_field :last_name, placeholder: "Last name", value: "#{@user.last_name}"  %>
+    </div>
+    <div class="input-box" >
+      <%= f.number_field :mobile, placeholder: "Mobile", value: "#{@user.mobile}"  %>
+    </div>
+  </div>
+  <div class="button input-box">   
+    <%= f.submit  "Edit" %>
+  </div>
+<% end %>
 
